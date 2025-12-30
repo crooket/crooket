@@ -1,3 +1,0 @@
-insert mylib
-
-mylib.say_hi("Zohan")

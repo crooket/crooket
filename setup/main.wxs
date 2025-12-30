@@ -1,0 +1,221 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="A5C8D707-CDF9-4953-94FF-F4DB5EFE6509" UpgradeCode="19084E8A-BB96-4473-BD04-672D3407A39C" Version="1.0.0.0" Language="1033" Name="Crooket" Manufacturer="Zohan Haque">
+    <Package InstallerVersion="200" InstallScope="perMachine" InstallPrivileges="elevated" Compressed="yes" Manufacturer="Zohan Haque" />
+    <Media EmbedCab="yes" Cabinet="media1.cab" Id="1" />
+    <Icon Id="icon" SourceFile="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\icon.ico" />
+    <WixVariable Id="WixUIDialogBmp" Value="C:\Users\zohan\OneDrive\Desktop\crooket\setup\bigback.bmp" />
+    <WixVariable Id="WixUIBannerBmp" Value="C:\Users\zohan\OneDrive\Desktop\crooket\setup\banner.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="C:\Users\zohan\OneDrive\Desktop\crooket\setup\license.rtf" />
+    <Property Id="ARPPRODUCTICON" Value="icon" />
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="DesktopFolder" Name="Desktop" />
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="MenuAppFolder" Name="TheAppName" />
+      </Directory>
+      <Directory Id="ProgramFiles64Folder">
+        <!-- Made this directory a property (uppercase ID) so it can be formatted into the PATH value -->
+        <Directory Id="INSTALLFOLDER" Name="Crooket">
+          <!-- Made crinst a property too -->
+          <Directory Name="crinst" Id="CRINSTFOLDER" />
+        </Directory>
+      </Directory>
+    </Directory>
+    <ComponentGroup Id="RemoveFolders">
+      <ComponentRef Id="Remove.MenuAppFolder" />
+      <ComponentRef Id="Remove.ProgramFiles64Folder" />
+    </ComponentGroup>
+    <ComponentGroup Id="app">
+      <ComponentRef Id="CId12A1B704" />
+      <ComponentRef Id="CId4F1F0435" />
+      <ComponentRef Id="CIdD8AF769D" />
+      <ComponentRef Id="CIdB749566A" />
+      <ComponentRef Id="CIdBB891E82" />
+      <ComponentRef Id="CIdCBBD0432" />
+      <ComponentRef Id="CSCIdD6D7E94B" />
+      <ComponentRef Id="CSCId7F99191B" />
+      <ComponentRef Id="CIdC2DE2AC0" />
+      <ComponentRef Id="CIdEBD99A72" />
+      <ComponentRef Id="CIdBEB8E3B1" />
+      <ComponentRef Id="CId150CE8EE" />
+      <ComponentRef Id="CId1C3A574F" />
+      <ComponentRef Id="CId76074E67" />
+      <ComponentRef Id="CIdC51E5A33" />
+    </ComponentGroup>
+    <ComponentGroup Id="crinst">
+      <ComponentRef Id="CId8DD80EE4" />
+      <ComponentRef Id="CId9454B0E8" />
+      <ComponentRef Id="CId55916B3C" />
+      <ComponentRef Id="CIdD407A609" />
+      <ComponentRef Id="CIdC33D7E3B" />
+      <ComponentRef Id="CIdFA64404C" />
+      <ComponentRef Id="CId59C4E11E" />
+      <ComponentRef Id="CIdB9010D3D" />
+      <ComponentRef Id="CId1378AEFD" />
+      <ComponentRef Id="CId82D5F755" />
+      <ComponentRef Id="CIdC8CAEDF1" />
+      <ComponentRef Id="CId12041A41" />
+      <ComponentRef Id="CIdB041FA55" />
+      <ComponentRef Id="CId7B0BA196" />
+    </ComponentGroup>
+    <Feature Id="ProductFeature" Title="Crooket" Description="The programming language itself">
+      <ComponentGroupRef Id="RemoveFolders" />
+      <ComponentGroupRef Id="app" />
+    </Feature>
+    <Feature Id="ProductFeature1" Title="Crinst" Description="Crinst is a package manager for Crooket">
+      <ComponentGroupRef Id="RemoveFolders" />
+      <ComponentGroupRef Id="crinst" />
+    </Feature>
+    <UIRef Id="WixUI_FeatureTree" />
+    <DirectoryRef Id="ProgramFiles64Folder">
+      <Component Id="Remove.ProgramFiles64Folder" Guid="3ACCDE76-200F-46BC-931F-539C9D683887">
+        <RemoveFolder Id="ProgramFiles64Folder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Components installed into INSTALLFOLDER (Crooket) -->
+    <DirectoryRef Id="INSTALLFOLDER">
+      <Component Id="CIdC51E5A33" Guid="6ABAE486-9F29-4FCE-922E-9018A816C599" Win64="no">
+        <File Id="FId3AD175E7" Name="_bz2.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId76074E67" Guid="B7F2A247-DB68-488D-9173-E63D19733085" Win64="no">
+        <File Id="FIdF997451E" Name="_decimal.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId1C3A574F" Guid="12C5A997-6961-4904-B602-A17094C09285" Win64="no">
+        <File Id="FIdF5765882" Name="_hashlib.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId150CE8EE" Guid="1D696485-9B49-4C4E-BC1D-B024A7714EF4" Win64="no">
+        <File Id="FId642C9A4B" Name="_lzma.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdBEB8E3B1" Guid="54829DD7-5F42-4C1B-8078-8F5E400C6134" Win64="no">
+        <File Id="FIdDCB9F75C" Name="_socket.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdEBD99A72" Guid="194478C5-D0A6-42E5-B097-DF04BC7A1845" Win64="no">
+        <File Id="FId3E1B2332" Name="base_library.zip" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdC2DE2AC0" Guid="ECF7B5C7-E64E-4797-BCBA-1989EFFF1244" Win64="no">
+        <File Id="FIdBE683AC1" Name="Crooket.exe" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <!-- Append the Crooket install folder to PATH (system-wide). Changed Action to "set" so Part="last" is allowed. -->
+        <Environment Id="PathCrooket" Name="PATH" Value="[INSTALLFOLDER]" Action="set" Part="last" System="yes" Permanent="no" Separator=";" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdCBBD0432" Guid="7417A8D0-1B0E-4C28-91DA-2E2E394DEE12" Win64="no">
+        <File Id="FId7B3B8B53" Name="icon.ico" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdBB891E82" Guid="6690958B-886D-4949-B9B9-8D1CFC7115E5" Win64="no">
+        <File Id="FIdA2C83783" Name="libcrypto-3.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdB749566A" Guid="DEE2800F-D256-4926-AEE4-56B9E7B76253" Win64="no">
+        <File Id="FId8903B0F5" Name="python313.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdD8AF769D" Guid="7493587F-864F-48E1-BC01-71CE48F96893" Win64="no">
+        <File Id="FId5A4504B1" Name="select.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId4F1F0435" Guid="D0A70C1F-3645-4239-869C-BE988A3CAB51" Win64="no">
+        <File Id="FIdB9A0307F" Name="unicodedata.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId12A1B704" Guid="390F07AD-54EB-45BD-BC48-AF47B3C74E34" Win64="no">
+        <File Id="FId6D157597" Name="VCRUNTIME140.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\dist\Crooket\" />
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Program Menu shortcut component (updated WorkingDirectory to INSTALLFOLDER) -->
+    <DirectoryRef Id="ProgramMenuFolder">
+      <Component Id="CSCId7F99191B" Guid="AE838308-0DF8-45DE-A98D-BFEDADE8AE2D">
+        <Shortcut Id="SId26B58CC6" Name="Crooket" Description="A Programming language based on python" Target="[!FIdBE683AC1]" WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCId7F99191B" Directory="ProgramMenuFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="MenuAppFolder">
+      <Component Id="Remove.MenuAppFolder" Guid="4215F6A8-7749-4EB1-87B9-BCA9D52481EF">
+        <RemoveFolder Id="MenuAppFolder" On="uninstall" />
+        <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Desktop shortcut component (updated WorkingDirectory to INSTALLFOLDER) -->
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="CSCIdD6D7E94B" Guid="3D5F487B-4629-422E-9549-2D6C1B5F72EA">
+        <Shortcut Id="SId89261E19" Name="Crooket" Description="a programming language." Target="[!FIdBE683AC1]" WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+        <RemoveFolder Id="CSCIdD6D7E94B" Directory="DesktopFolder" On="uninstall" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- crinst folder components (DirectoryRef updated to CRINSTFOLDER) -->
+    <DirectoryRef Id="CRINSTFOLDER">
+      <Component Id="CId7B0BA196" Guid="3A595E16-D225-45F5-B963-4A4752CB414D" Win64="no">
+        <File Id="FId45F1C934" Name="_bz2.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdB041FA55" Guid="D95A5D59-8CC4-4E3C-8442-B5AFFE77F60E" Win64="no">
+        <File Id="FId5A999A7E" Name="_decimal.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId12041A41" Guid="38CECFDC-9F43-45F1-879D-47A28AE33024" Win64="no">
+        <File Id="FId63B60F95" Name="_hashlib.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdC8CAEDF1" Guid="6588197D-F0E9-4E78-9C57-1E3FE2F37FCC" Win64="no">
+        <File Id="FIdBBCF6ADA" Name="_lzma.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId82D5F755" Guid="A47952D5-8571-4005-8047-CB823053D31F" Win64="no">
+        <File Id="FIdBD6F45CB" Name="_socket.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId1378AEFD" Guid="FFB06901-7C86-42D9-B5E2-303C3551818F" Win64="no">
+        <File Id="FIdC196C2EC" Name="_ssl.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdB9010D3D" Guid="F95A4448-67E8-41D3-9B88-F89355366412" Win64="no">
+        <File Id="FId09A9126D" Name="base_library.zip" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId59C4E11E" Guid="F0524E81-AB5C-449E-B7CE-A77CB9FCB71E" Win64="no">
+        <File Id="FId132B9328" Name="Crinst.exe" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <!-- Append crinst folder to PATH. Changed Action to "set" so Part="last" is allowed. -->
+        <Environment Id="PathCrinst" Name="PATH" Value="[CRINSTFOLDER]" Action="set" Part="last" System="yes" Permanent="no" Separator=";" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdFA64404C" Guid="FF002E66-14F1-4A83-90E6-702DE50CA419" Win64="no">
+        <File Id="FIdC3AA37F6" Name="libcrypto-3.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdC33D7E3B" Guid="9A465B96-020A-4461-9EDA-877BF093D8C0" Win64="no">
+        <File Id="FId96EF9AAD" Name="libssl-3.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CIdD407A609" Guid="5DFC3AF5-9947-47CD-A2B5-FB43AE232327" Win64="no">
+        <File Id="FIdAA265B78" Name="python313.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId55916B3C" Guid="CF5DD0D6-23FF-499F-BD7F-AFB55DB9A5DD" Win64="no">
+        <File Id="FId967DB185" Name="select.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId9454B0E8" Guid="1D43699B-59C3-476A-BCA1-6CAD77536FCC" Win64="no">
+        <File Id="FId53EBF43E" Name="unicodedata.pyd" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+      <Component Id="CId8DD80EE4" Guid="8443D7C5-9C7F-4DE8-8D88-94107DB43898" Win64="no">
+        <File Id="FIdE2E2D372" Name="VCRUNTIME140.dll" Source="C:\Users\zohan\OneDrive\Desktop\crooket\crinst\dist\Crinst\" />
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+  </Product>
+</Wix>
